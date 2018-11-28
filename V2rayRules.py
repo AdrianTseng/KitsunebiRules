@@ -121,7 +121,7 @@ ad_content = ad_file.read().split("\n")
 ad_file.close()
 for each in ad_content:
     try:
-        rules.append("DOMAIN-SUFFIX,%s,BLOCK" % each if each[0] != "." else each[1:])
+        rules.append("DOMAIN-SUFFIX,%s,REJECT" % each if each[0] != "." else each[1:])
     except IndexError:
         print(each)
 

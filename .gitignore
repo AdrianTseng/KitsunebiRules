@@ -281,4 +281,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,macos,python,pycharm,windows
-.idea
+.idea/
+ad_block_list
+gfw_list/
