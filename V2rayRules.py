@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from subprocess import call
-from os.path import isdir, split, realpath, join
+from os.path import isdir, split, realpath, join, exists
 from sys import stderr
 from base64 import b64decode
 from re import compile, search
@@ -125,7 +125,14 @@ for each in ad_content:
     except IndexError:
         print(each)
 
-rules = list(set(rules))
+custom_file = join(DIR, "custom.conf")
+if exists(custom_file):
+    c_file = open(custom_file)
+    c_content = c_file.read().split("\n")
+    rules.extend(c_content)
+
+rules = sorted(list(set(rules)))
+rules = [each for each in rules if "PROXY" in each or "REJECT" in each]
 res_file = open(join(DIR, "personal.conf"), 'w')
 res_file.write("// Personal Kitsunebi Configures\n\n")
 res_file.write("[Rule]\n\n")
