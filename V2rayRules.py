@@ -113,7 +113,7 @@ for each in gfw_list_rows:
             else:
                 rules.append(strict_format("USER-AGENT", each[row.start(): row.end()], "PROXY"))
 
-proxy_white = ["facebook", "google", "instagram", "dropbox", "gstatic", "youtube", "ggpht", "appspot", "ytimg", "twitter"]
+proxy_white = ["facebook", "instagram", "dropbox", "gstatic", "youtube", "ggpht", "appspot", "ytimg", "twitter", "nintendo"]
 rules = [each for each in rules if True in [True if w in each else False for w in proxy_white]]
 
 wrong_rules = [each for each in rules if "*" in each]
